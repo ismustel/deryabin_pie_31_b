@@ -12,6 +12,8 @@
     <script defer src="js/serial_number.js"></script>
     <script defer src="js/first_system.js"></script>
     <script defer src="js/second_system.js"></script>
+    <script defer src="js/even_set.js"></script>
+    <script defer src="js/summ_number_range.js"></script>
     <script>
         function hide_all_tasks() {
             $("div.task").each(function (index, task_item) {
@@ -19,9 +21,10 @@
                 $(task_item).hide();
             });
         };
+
+
         $(document).ready(function () {
             $("#el1").click(function () {
-                console.log("You clicked a paragraph!");
                 hide_all_tasks();
                 $("#task1").show();
             });
@@ -39,6 +42,14 @@
                 $("#task3_3").show();
                 $("#task3_4").show();
             });
+            $("#el5").click(function () {
+                hide_all_tasks();
+                $("#task4_1").show();
+            });
+            $("#el6").click(function () {
+                hide_all_tasks();
+                $("#task4_2").show();
+            });
             $("#calc_average_sqrt").click(function () {
                 average_sqrt("value1", "value2", "res");
             })
@@ -46,7 +57,7 @@
                 calc_hundrend("three_digit_number", "res_hundred")
             })
             $("#average_number_between").click(function () {
-                check_number_between("first_number_a", "second_number_b","third_number_c", "res_average_number_between")
+                check_number_between("first_number_a", "second_number_b", "third_number_c", "res_average_number_between")
             })
             $("#serial_number").click(function () {
                 find_two_serial_number("first_number", "second_number", "res_serial_number")
@@ -56,6 +67,19 @@
             })
             $("#calc_system_2").click(function () {
                 solution_second_system("system_2_number_a", "system_2_number_b", "system_2_number_x", "res_system_2")
+            })
+            $("#add").click(function () {
+                create_inputs($("#integer_value").val(), "for_input", "help")
+            })
+            $("#clear").click(function () {
+               $("#help").empty()
+               $("#for_input").empty() 
+            })
+            $("#calc_even_number_set").click(function () {
+                count_even_numbers("even_number_set_res");
+            })
+            $("#calc_summ_number_range").click(function () {
+                summ_number_range("number_a_for_summ","number_b_for_summ", "summ_number_range_res");
             })
         });
 
@@ -76,6 +100,13 @@
             <div class="dropdown-content">
                 <a href="#" id="el3">Задание №1,2</a>
                 <a href="#" id="el4">Задание №3,4</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropdown-btn">Лабораторная работа №4</button>
+            <div class="dropdown-content">
+                <a href="#" id="el5">Задание №1</a>
+                <a href="#" id="el6">Задание №2</a>
             </div>
         </div>
     </div>
@@ -265,5 +296,70 @@
                 </div>
             </div>
         </div>
+        <div class="task" id="task4_1">
+            <h4 class="position-task">
+                Задание 1
+            </h4>
+            <div>
+                <p class="position-task">
+                    Дано целое число N и набор из N целых чисел. Вывести в том же порядке все четные числа из
+                    данного набора и количество K таких чисел.
+                </p>
+            </div>
+            <div class="data-entry">
+                <div>
+                    <a class="input-text">Введите число N:</a>
+                    <input type="text" id="integer_value" value>
+                </div>
+
+                <div id="help">
+                   
+                </div>
+                <div id="for_input">
+                    
+                </div>
+            </div>
+            <div>
+                <button class="btn-calc" id="add">Добавить</button>
+                <button class="btn-calc" id="clear">Очистить</button>
+            </div>
+            <div style="margin-top: 10px;">
+                <button id="calc_even_number_set" class="btn-calc">
+                    Вычислить
+                </button>
+            </div>
+            <div class="block-answer">
+                Ответ:<span id="even_number_set_res"></span>
+            </div>
+        </div>
+        <div class="task" id="task4_2">
+            <h4 class="position-task">
+                Задание 2
+            </h4>
+            <div>
+                <p class="position-task">
+                    Даны два целых числа A и B (A < B). Найти сумму всех целых чисел от A до B включительно. </p>
+            </div>
+            <div class="data-entry">
+                <div>
+                    <a class="input-text">Введите число A:</a>
+                    <input type="text" id="number_a_for_summ" value>
+                </div>
+
+                <div>
+                    <a class="input-text">Введите число B:</a>
+                    <input type="text" id="number_b_for_summ" value>
+                </div>
+            </div>
+            <div>
+                <button id="calc_summ_number_range" class="btn-calc">
+                    Вычислить
+                </button>
+            </div>
+            <div class="block-answer">
+                Ответ:<span id="summ_number_range_res"></span>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
